@@ -1,0 +1,84 @@
+﻿@model CinemaFinal.Models.Session
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Session</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hall.Id)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hall.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movie.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShowTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShowTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookedSeats)
+        </dt>
+
+        <dd id="reservedSeats">
+            @Html.DisplayFor(model => model.BookedSeats)
+        </dd>
+        <dd id="rowsNum">
+            @Html.DisplayFor(model => model.Hall.RowsCount)
+        </dd>
+        <dd id="colsNum">
+            @Html.DisplayFor(model => model.Hall.SeatsInRow)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<h2> Choose seats by clicking the corresponding seat in the layout below:</h2>
+<div id="holder">
+    <ul id="place"></ul>
+</div>
+<div style="float:left;">
+    <ul id="seatDescription">
+        <li style="background:url('/Images/available_seat_img.gif') no-repeat scroll 0 0 transparent;">Available Seat</li>
+        <li style="background:url('/images/booked_seat_img.gif') no-repeat scroll 0 0 transparent;">Booked Seat</li>
+        <li style="background:url('/Images/selected_seat_img.gif') no-repeat scroll 0 0 transparent;">Selected Seat</li>
+    </ul>
+</div>
+<div style="clear:both;width:100%">
+    <input type="button" id="btnShowNew" value="Show Selected Seats" />
+    <input type="button" id="btnShow" value="Show All" />
+</div>
+@section Scripts {
+    <script src="~/Scripts/Booking.js"></script>
+}

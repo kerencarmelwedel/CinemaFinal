@@ -1,0 +1,34 @@
+﻿@model CinemaFinal.Models.Hall
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hall</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RowsCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RowsCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SeatsInRow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeatsInRow)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

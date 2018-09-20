@@ -1,0 +1,96 @@
+﻿@model CinemaFinal.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+             Image
+        </dt>
+
+        <dd>            
+           <img src="~/images/@(Model.Id).png" width="200"/>
+       </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Id Session")
+        </th>
+        <th>
+            @Html.DisplayName("Show Date")
+        </th>
+        <th>
+            @Html.DisplayName("Show Time")
+        </th>
+        <th>
+            @Html.DisplayName("Hall")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Sessions)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HallId)
+            </td>
+            <td>
+                <div>
+                    <form method="get" action="@Url.Action("Details", "Sessions", new { id = item.Id } , null)">
+                        <button type="submit">Booking</button>
+
+                    </form>
+                </div>
+            </td>
+
+        </tr>
+    }
+
+</table>

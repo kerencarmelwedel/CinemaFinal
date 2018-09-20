@@ -1,0 +1,116 @@
+﻿@model IEnumerable<CinemaFinal.Models.Movie>
+@{
+    ViewBag.Title = "Home Page";
+}
+<h1>Welcome to the cinema!</h1>
+<img src="~/images/cinema-film.png" width="1000" height="400" />
+<br />
+
+<link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+<div>
+    @using (Ajax.BeginForm("Search", new AjaxOptions
+    {
+
+        UpdateTargetId = "tblMovies",
+        InsertionMode = InsertionMode.Replace
+    }))
+    {
+        <h3>Search for a movie: </h3>
+        @Html.TextBox("prefix", null, new { onkeyup = "$(this.form).submit();" })
+    }
+</div>
+
+@Html.Partial("_MoviesTable")
+<br />
+@Html.ActionLink("To all of our Movies ", "Index", "UsersMovies")
+<h3> Choose from our monthly favorites</h3>
+<div class="container">
+    <div class="row">
+        @*פונקציה שמציגה 3 סרטים שהוזמנו הכי הרבה בחודש האחרון??*@
+        <img class="poster" src="~/images/(Movie.Id).jpg" width="300" />
+        <img src="~/images/1.jpg" height="300" width="200" />
+        <img src="~/images/2.jpg" height="300" width="200" />
+        <img src="~/images/1013.jpg" height="300" width="200" />
+
+    </div>
+</div>
+@*<h3>Search for a movie </h3>
+    <br />
+    @using (Ajax.BeginForm("Search", new AjaxOptions
+    {
+        UpdateTargetId = "tblMovies",
+        InsertionMode = InsertionMode.Replace
+    }))
+    {
+        @Html.TextBox("prefix", null, new { onkeyup = "$(this.form).submit();" })
+        <input type="submit" value="Search" />
+    }
+
+    @Html.Partial("MoviesTable", Model)*@
+
+
+
+
+
+
+@*<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        Enter movie name: <input type="search" id="search" /><br />
+        <table id="tblMovies">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Director</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <script src="../Scripts/jquery-3.3.1.js"></script>
+        <script>
+            function getMovies(prefix) {
+                const url = "/Movies/Search";
+                $.getJSON(url, { prefix }).done(arr => {
+                    console.log(arr);
+                    $("#tblMovies tbody").empty();
+                    for (let m of arr) {
+                        $("#tblMovies tbody").append(
+                            `<tr>
+                                                <td>${m.Name}</td>
+                                                <td>${m.Director}</td>
+                                                <td>${m.Description}</td>
+                                            </tr>`
+                        );
+                    }
+                });
+            }
+
+            getMovies('');
+
+            $("#search").keyup(() => {
+                getMovies($("#search").val());
+            });
+
+            $("#search").bind("search", () => {
+                getMovies($("#search").val());
+            });
+        </script>
+    </body>
+    </html>*@
+
+
+
